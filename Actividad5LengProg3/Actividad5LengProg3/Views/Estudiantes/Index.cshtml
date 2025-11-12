@@ -1,0 +1,130 @@
+@model Actividad5LengProg3.Models.ViewModels.EstudianteViewModel
+
+@{
+    ViewData["Title"] = "Registro de Estudiantes";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="bi bi-person-plus-fill"></i> Registro de Estudiantes
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Registrar" method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Matricula" class="form-label"></label>
+                                <input asp-for="Matricula" class="form-control" />
+                                <span asp-validation-for="Matricula" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="NombreCompleto" class="form-label"></label>
+                                <input asp-for="NombreCompleto" class="form-control" />
+                                <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="CarreraId" class="form-label"></label>
+                                <select asp-for="CarreraId" class="form-select" asp-items="ViewBag.Carreras">
+                                    <option value="">-- Seleccione una carrera --</option>
+                                </select>
+                                <span asp-validation-for="CarreraId" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="RecintoId" class="form-label"></label>
+                                <select asp-for="RecintoId" class="form-select" asp-items="ViewBag.Recintos">
+                                    <option value="">-- Seleccione un recinto --</option>
+                                </select>
+                                <span asp-validation-for="RecintoId" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="CorreoInstitucional" class="form-label"></label>
+                            <input asp-for="CorreoInstitucional" class="form-control" type="email" />
+                            <span asp-validation-for="CorreoInstitucional" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Celular" class="form-label"></label>
+                                <input asp-for="Celular" class="form-control" placeholder="809-555-1234" />
+                                <span asp-validation-for="Celular" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Telefono" class="form-label"></label>
+                                <input asp-for="Telefono" class="form-control" placeholder="809-555-5678" />
+                                <span asp-validation-for="Telefono" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Direccion" class="form-label"></label>
+                            <input asp-for="Direccion" class="form-control" />
+                            <span asp-validation-for="Direccion" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="FechaNacimiento" class="form-label"></label>
+                                <input asp-for="FechaNacimiento" class="form-control" type="date" />
+                                <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="Genero" class="form-label"></label>
+                                <select asp-for="Genero" class="form-select" asp-items="Html.GetEnumSelectList<Actividad5LengProg3.Models.Entities.Sexo>()">
+                                    <option value="">-- Seleccione --</option>
+                                </select>
+                                <span asp-validation-for="Genero" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="Turno" class="form-label"></label>
+                                <select asp-for="Turno" class="form-select" asp-items="Html.GetEnumSelectList<Actividad5LengProg3.Models.Entities.Turno>()">
+                                    <option value="">-- Seleccione --</option>
+                                </select>
+                                <span asp-validation-for="Turno" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-check">
+                                    <input asp-for="Becado" class="form-check-input" type="checkbox" />
+                                    <label asp-for="Becado" class="form-check-label"></label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="PorcentajeBeca" class="form-label"></label>
+                                <input asp-for="PorcentajeBeca" class="form-control" type="number" min="0" max="100" />
+                                <span asp-validation-for="PorcentajeBeca" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-action="Lista" class="btn btn-secondary">
+                                <i class="bi bi-list"></i> Ver Listado
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-save"></i> Registrar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
